@@ -227,7 +227,7 @@ class _WebViewState extends State<WebView> {
         onLongPress: () {},
         excludeFromSemantics: true,
         child: AndroidView(
-          viewType: 'plugins.flutter.io/webview',
+          viewType: 'plugins.flutter.io/webview_custom',
           onPlatformViewCreated: _onPlatformViewCreated,
           gestureRecognizers: widget.gestureRecognizers,
           // WebView content is not affected by the Android view's layout direction,
@@ -240,7 +240,7 @@ class _WebViewState extends State<WebView> {
       );
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       return UiKitView(
-        viewType: 'plugins.flutter.io/webview',
+        viewType: 'plugins.flutter.io/webview_custom',
         onPlatformViewCreated: _onPlatformViewCreated,
         gestureRecognizers: widget.gestureRecognizers,
         creationParams: _CreationParams.fromWidget(widget).toMap(),
@@ -363,7 +363,7 @@ class WebViewController {
   WebViewController._(
     int id,
     this._widget,
-  ) : _channel = MethodChannel('plugins.flutter.io/webview_$id') {
+  ) : _channel = MethodChannel('plugins.flutter.io/webview_custom_$id') {
     _settings = _WebSettings.fromWidget(_widget);
     _updateJavascriptChannelsFromSet(_widget.javascriptChannels);
     _channel.setMethodCallHandler(_onMethodCall);

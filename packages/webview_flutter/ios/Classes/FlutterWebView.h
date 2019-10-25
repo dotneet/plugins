@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FLTWebViewController : NSObject <FlutterPlatformView>
+@interface FLTCWebViewController : NSObject <FlutterPlatformView>
 
 - (instancetype)initWithFrame:(CGRect)frame
                viewIdentifier:(int64_t)viewId
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIView*)view;
 @end
 
-@interface FLTWebViewFactory : NSObject <FlutterPlatformViewFactory>
+@interface FLTCWebViewFactory : NSObject <FlutterPlatformViewFactory>
 - (instancetype)initWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar;
 @end
 

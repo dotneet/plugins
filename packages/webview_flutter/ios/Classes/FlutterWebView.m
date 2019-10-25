@@ -3,10 +3,10 @@
 // found in the LICENSE file.
 
 #import "FlutterWebView.h"
-#import "FLTWKNavigationDelegate.h"
+#import "FLTCWKNavigationDelegate.h"
 #import "JavaScriptChannelHandler.h"
 
-@implementation FLTWebViewFactory {
+@implementation FLTCWebViewFactory {
   NSObject<FlutterPluginRegistrar>* _registrar;
   NSObject<FlutterBinaryMessenger>* _messenger;
 }
@@ -27,7 +27,7 @@
 - (NSObject<FlutterPlatformView>*)createWithFrame:(CGRect)frame
                                    viewIdentifier:(int64_t)viewId
                                         arguments:(id _Nullable)args {
-  FLTWebViewController* webviewController = [[FLTWebViewController alloc] initWithFrame:frame
+  FLTCWebViewController* webviewController = [[FLTCWebViewController alloc] initWithFrame:frame
                                                                          viewIdentifier:viewId
                                                                               arguments:args
                                                                               registrar:_registrar];
@@ -36,14 +36,14 @@
 
 @end
 
-@implementation FLTWebViewController {
+@implementation FLTCWebViewController {
   WKWebView* _webView;
   int64_t _viewId;
   FlutterMethodChannel* _channel;
   NSString* _currentUrl;
   // The set of registered JavaScript channel names.
   NSMutableSet* _javaScriptChannelNames;
-  FLTWKNavigationDelegate* _navigationDelegate;
+  FLTCWKNavigationDelegate* _navigationDelegate;
   NSObject<FlutterPluginRegistrar>* _registrar;
 }
 
@@ -55,7 +55,7 @@
     _viewId = viewId;
     _registrar = registrar;
 
-    NSString* channelName = [NSString stringWithFormat:@"plugins.flutter.io/webview_%lld", viewId];
+    NSString* channelName = [NSString stringWithFormat:@"plugins.flutter.io/webview_custom_%lld", viewId];
     _channel = [FlutterMethodChannel methodChannelWithName:channelName
                                            binaryMessenger:registrar.messenger];
     _javaScriptChannelNames = [[NSMutableSet alloc] init];
@@ -71,7 +71,7 @@
     configuration.userContentController = userContentController;
 
     _webView = [[WKWebView alloc] initWithFrame:frame configuration:configuration];
-    _navigationDelegate = [[FLTWKNavigationDelegate alloc] initWithChannel:_channel];
+    _navigationDelegate = [[FLTCWKNavigationDelegate alloc] initWithChannel:_channel];
     _webView.navigationDelegate = _navigationDelegate;
     __weak __typeof__(self) weakSelf = self;
     [_channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
@@ -328,8 +328,8 @@
 - (void)registerJavaScriptChannels:(NSSet*)channelNames
                         controller:(WKUserContentController*)userContentController {
   for (NSString* channelName in channelNames) {
-    FLTJavaScriptChannel* channel =
-        [[FLTJavaScriptChannel alloc] initWithMethodChannel:_channel
+    FLTCJavaScriptChannel* channel =
+        [[FLTCJavaScriptChannel alloc] initWithMethodChannel:_channel
                                       javaScriptChannelName:channelName];
     [userContentController addScriptMessageHandler:channel name:channelName];
     NSString* wrapperSource = [NSString

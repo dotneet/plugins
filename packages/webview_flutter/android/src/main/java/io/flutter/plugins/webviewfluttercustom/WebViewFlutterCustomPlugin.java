@@ -14,7 +14,7 @@ public class WebViewFlutterCustomPlugin {
     registrar
         .platformViewRegistry()
         .registerViewFactory(
-            "plugins.flutter.io/webview", new WebViewFactory(registrar.messenger()));
+            "plugins.flutter.io/webview_custom", new WebViewFactory(registrar.messenger()));
     FlutterCookieManager.registerWith(registrar.messenger());
   }
 }

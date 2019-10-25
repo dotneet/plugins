@@ -36,7 +36,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     // Allow local storage.
     webView.getSettings().setDomStorageEnabled(true);
 
-    methodChannel = new MethodChannel(messenger, "plugins.flutter.io/webview_" + id);
+    methodChannel = new MethodChannel(messenger, "plugins.flutter.io/webview_custom_" + id);
     methodChannel.setMethodCallHandler(this);
 
     flutterWebViewClient = new FlutterWebViewClient(methodChannel);

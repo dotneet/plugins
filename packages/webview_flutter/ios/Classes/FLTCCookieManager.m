@@ -1,10 +1,10 @@
-#import "FLTCookieManager.h"
+#import "FLTCCookieManager.h"
 
-@implementation FLTCookieManager {
+@implementation FLTCCookieManager {
 }
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar {
-  FLTCookieManager *instance = [[FLTCookieManager alloc] init];
+  FLTCCookieManager *instance = [[FLTCCookieManager alloc] init];
 
   FlutterMethodChannel *channel =
       [FlutterMethodChannel methodChannelWithName:@"plugins.flutter.io/cookie_manager"

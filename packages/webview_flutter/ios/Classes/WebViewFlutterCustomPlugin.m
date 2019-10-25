@@ -1,13 +1,13 @@
 #import "WebViewFlutterCustomPlugin.h"
-#import "FLTCookieManager.h"
+#import "FLTCCookieManager.h"
 #import "FlutterWebView.h"
 
-@implementation FLTWebViewFlutterCustomPlugin
+@implementation FLTCWebViewFlutterCustomPlugin
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  FLTWebViewFactory* webviewFactory = [[FLTWebViewFactory alloc] initWithRegistrar:registrar];
-  [registrar registerViewFactory:webviewFactory withId:@"plugins.flutter.io/webview"];
-  [FLTCookieManager registerWithRegistrar:registrar];
+  FLTCWebViewFactory* webviewFactory = [[FLTCWebViewFactory alloc] initWithRegistrar:registrar];
+  [registrar registerViewFactory:webviewFactory withId:@"plugins.flutter.io/webview_custom"];
+  [FLTCCookieManager registerWithRegistrar:registrar];
 }
 
 @end
