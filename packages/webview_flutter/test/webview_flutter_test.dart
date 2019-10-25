@@ -7,7 +7,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import 'package:webview_flutter_custom/webview_flutter.dart';
 
 typedef void VoidCallback();
 

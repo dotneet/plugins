@@ -20,6 +20,6 @@ dev_dependencies:
 
 flutter:
   plugin:
-    androidPackage: io.flutter.plugins.webviewflutter
+    androidPackage: io.flutter.plugins.webviewfluttercustom
     iosPrefix: FLT
     pluginClass: WebViewFlutterPlugin
