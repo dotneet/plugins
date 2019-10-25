@@ -7,7 +7,7 @@ package io.flutter.plugins.webviewfluttercustom;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** WebViewFlutterPlugin */
-public class WebViewFlutterPlugin {
+public class WebViewFlutterCustomPlugin {
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {

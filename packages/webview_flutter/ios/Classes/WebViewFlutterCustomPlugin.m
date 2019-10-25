@@ -1,8 +1,8 @@
-#import "WebViewFlutterPlugin.h"
+#import "WebViewFlutterCustomPlugin.h"
 #import "FLTCookieManager.h"
 #import "FlutterWebView.h"
 
-@implementation FLTWebViewFlutterPlugin
+@implementation FLTWebViewFlutterCustomPlugin
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FLTWebViewFactory* webviewFactory = [[FLTWebViewFactory alloc] initWithRegistrar:registrar];
